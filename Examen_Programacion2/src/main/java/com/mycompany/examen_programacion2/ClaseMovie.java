@@ -4,10 +4,59 @@
  */
 package com.mycompany.examen_programacion2;
 
-/**
- *
- * @author croge
- */
-public class ClaseMovie {
+import java.util.Calendar;
+
+public class ClaseMovie extends RentItem{
+    private Calendar fechaEstreno;
     
+    public ClaseMovie(String codigo, String nombre, double precioB);
+        super(codigo,nombre,precioB);
+        this.fechaEstreno= Calendar.getInstance();
+    
+    public Calendar GetFechaEstreno(){
+        return fechaEstreno;
+    }
+    
+    public void SetFechaEstreno(){
+        
+        this.fechaEstreno=fechaEstreno;
+    }
+    
+    public String getEstado(){
+        
+        Calendar Primero = Calendar.getInstance();
+        Calendar Ultimo =(Calendar) fechaEstreno.clone();
+        
+        if(Primero.before(Ultimo) || Primero.equals(Ultimo)){
+            return "ESTRENO";
+        }else{
+            return "NORMAL";
+        }
+   }
+    
+    @Override
+    public double pagoRenta(int dias){
+        double Total = getPrecioBase() * dias;
+        String estado = getEstado();
+        int diasAdicionales;
+        
+        if(estado.equals("ESTRENO") && dias > 2){
+            diasAdicionales = (dias - 2);
+            Total += (50 * diasAdicionales);
+            
+        }else if(estado.equals("NORMAL") && dias > 5){
+            diasAdicionales = (dias - 5);
+            Total += (30 * diasAdicionales);
+        }
+        return Total;
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString()+ "| ESTADO: "+getEstado()+ " | PELICULA: ";
+    }
 }
+
+
+
+    
