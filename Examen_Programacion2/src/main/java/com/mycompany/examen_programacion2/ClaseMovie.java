@@ -6,57 +6,51 @@ package com.mycompany.examen_programacion2;
 
 import java.util.Calendar;
 
-public class ClaseMovie extends RentItem{
+public class ClaseMovie extends RentItem {
+
     private Calendar fechaEstreno;
-    
-    public ClaseMovie(String codigo, String nombre, double precioB){
-        super(codigo,nombre,precioB);
-        this.fechaEstreno= Calendar.getInstance();
+    private String estadoManual = null;
+
+    public ClaseMovie(String codigo, String nombre, double precioB) {
+        super(codigo, nombre, precioB);
+        this.fechaEstreno = Calendar.getInstance();
     }
-    
-    public Calendar GetFechaEstreno(){
+
+    public Calendar GetFechaEstreno() {
         return fechaEstreno;
     }
-    
-    public void setFechaEstreno(Calendar fechaEstreno){
+
+    public void setFechaEstreno(Calendar fechaEstreno) {
         this.fechaEstreno = fechaEstreno;
     }
-    
-    public String getEstado(){
+
+    public void setEstadoManual(String estado) {
+        this.estadoManual = estado;
+    }
+
+    public String getEstado() {
+        if (estadoManual != null) return estadoManual;
+
         Calendar hace3Meses = Calendar.getInstance();
         hace3Meses.add(Calendar.MONTH, -3);
-    
-        if(fechaEstreno.after(hace3Meses)){
-            return "ESTRENO";
-        }   
-        else {
-            return "NORMAL";
-        }
+        return fechaEstreno.after(hace3Meses) ? "ESTRENO" : "NORMAL";
     }
-    
+
     @Override
-    public double pagoRenta(int dias){
-        double Total = getPrecioBase() * dias;
+    public double pagoRenta(int dias) {
+        double total = getPrecioBase() * dias;
         String estado = getEstado();
-        int diasAdicionales;
-        
-        if(estado.equals("ESTRENO") && dias > 2){
-            diasAdicionales = (dias - 2);
-            Total += (50 * diasAdicionales);
-            
-        }else if(estado.equals("NORMAL") && dias > 5){
-            diasAdicionales = (dias - 5);
-            Total += (30 * diasAdicionales);
+
+        if (estado.equals("ESTRENO") && dias > 2) {
+            total += 50 * (dias - 2);
+        } else if (estado.equals("NORMAL") && dias > 5) {
+            total += 30 * (dias - 5);
         }
-        return Total;
+        return total;
     }
-    
+
     @Override
-    public String toString(){
-        return super.toString() + " Estado: " + getEstado() + " – Movie";
+    public String toString() {
+        return super.toString() + " Estado: " + getEstado() + " - Movie";
     }
 }
-
-
-
-    
