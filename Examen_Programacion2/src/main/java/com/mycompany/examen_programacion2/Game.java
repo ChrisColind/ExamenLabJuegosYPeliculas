@@ -21,22 +21,31 @@ public class Game extends RentItem implements MenuActions {
         fechaPublicacion = Calendar.getInstance();
     }
     
-    setFechaPublicacion(int year, int mes, int dia)
+    public void setFechaPublicacion(int year, int mes, int dia){
+        fechaPublicacion.set(year, mes - 1, dia);
+    }
     
+    public void addEspecificacion(String Spec){
+        gameSpecs.add(Spec);
+    }
+    
+    public void listEspecificaciones(){
+        
+    }
 
     @Override
     public void submenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public void ejecutarOpcion(int opcion) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
     }
 
     @Override
     public double pagoRenta(int dias) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return dias*renta;       
     }
     
 }
