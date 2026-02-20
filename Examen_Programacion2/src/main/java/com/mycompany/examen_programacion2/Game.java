@@ -15,6 +15,15 @@ public class Game extends RentItem implements MenuActions {
     private final int renta = 20;
     private Calendar fechaPublicacion;
     private javax.swing.ImageIcon imagen;
+    private String plataforma = "";
+    
+    public  String getPlataforma(){
+        return plataforma;
+    }
+    
+    public void setPlataforma(String plataforma){
+        this.plataforma = plataforma;
+    }
     
     public Game(String codigo,String nombre, double precioB){
         super(codigo, nombre, precioB);
@@ -49,8 +58,7 @@ public class Game extends RentItem implements MenuActions {
     public String toString(){
         return super.toString() + "Fecha: " + fechaPublicacion.get(Calendar.DAY_OF_MONTH) 
                 + "/" + (fechaPublicacion.get(Calendar.MONTH)+1) + "/" 
-                + fechaPublicacion.get(Calendar.YEAR) +
-                " - PS3 Game";
+                + fechaPublicacion.get(Calendar.YEAR) + plataforma;
     }
     
 
