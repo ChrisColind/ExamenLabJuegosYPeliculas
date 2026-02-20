@@ -28,7 +28,7 @@ public abstract class RentItem {
         return nombre;
     }
 
-    public double getPrecioBaseRenta(){
+    public double getPrecioBase(){
         return precioB;
     }
 

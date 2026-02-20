@@ -8,6 +8,7 @@ package com.mycompany.examen_programacion2;
  *
  * @author gpopo
  */
-public class MenuActions {
-    
+public interface MenuActions {
+    void submenu();
+    void ejecutarOpcion(int opcion);   
 }
