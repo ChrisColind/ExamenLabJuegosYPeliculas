@@ -5,6 +5,7 @@
 package com.mycompany.examen_programacion2;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 /**
  *
  * @author gpopo
@@ -14,7 +15,6 @@ public class Game extends RentItem implements MenuActions {
     private ArrayList<String> gameSpecs;
     private final int renta = 20;
     private Calendar fechaPublicacion;
-    private javax.swing.ImageIcon imagen;
     private String plataforma = "";
     
     public  String getPlataforma(){
@@ -37,6 +37,12 @@ public class Game extends RentItem implements MenuActions {
     
     public void addEspecificacion(String Spec){
         gameSpecs.add(Spec);
+    }
+    
+    
+    @Override
+    public ImageIcon getImagen(){
+        return imagen;
     }
     
     @Override
@@ -87,6 +93,5 @@ public class Game extends RentItem implements MenuActions {
     @Override
     public double pagoRenta(int dias) {
         return dias*renta;       
-    }
-    
+    }    
 }

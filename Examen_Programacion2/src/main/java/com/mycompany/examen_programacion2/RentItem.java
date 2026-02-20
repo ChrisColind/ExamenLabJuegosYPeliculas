@@ -9,7 +9,7 @@ public abstract class RentItem {
     private String codigo;
     private double precioB;
     private int copiasD;
-    private ImageIcon imagen; 
+    protected ImageIcon imagen; 
     
     public RentItem(String codigo,String nombre, double precioB){
         this.codigo = codigo;
