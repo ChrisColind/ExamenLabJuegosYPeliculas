@@ -11,6 +11,8 @@ package com.mycompany.examen_programacion2;
 public class Examen_Programacion2 {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        
+        
     }
 }
