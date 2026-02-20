@@ -14,6 +14,7 @@ public class Game extends RentItem implements MenuActions {
     private ArrayList<String> gameSpecs;
     private final int renta = 20;
     private Calendar fechaPublicacion;
+    private javax.swing.ImageIcon imagen;
     
     public Game(String codigo,String nombre, double precioB){
         super(codigo, nombre, precioB);
@@ -29,18 +30,50 @@ public class Game extends RentItem implements MenuActions {
         gameSpecs.add(Spec);
     }
     
-    public void listEspecificaciones(){
-        
+    @Override
+    public void setImagen(javax.swing.ImageIcon imagen){
+        this.imagen = imagen;
     }
+    
+    private void listEspecificaciones(int indice){
+        if(indice >= gameSpecs.size()) return;
+        System.out.println(gameSpecs.get(indice));
+        listEspecificaciones(indice + 1);
+    }
+    
+    public void listEspecificaciones(){
+        listEspecificaciones(0);
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "Fecha: " + fechaPublicacion.get(Calendar.DAY_OF_MONTH) 
+                + "/" + (fechaPublicacion.get(Calendar.MONTH)+1) + "/" 
+                + fechaPublicacion.get(Calendar.YEAR) +
+                " - PS3 Game";
+    }
+    
 
     @Override
     public void submenu() {
-        
+        System.out.println("1. Actualizar fecha de publicacion");
+        System.out.println("2. Agregar especificacion");
+        System.out.println("3. Ver especificaciones");
     }
 
     @Override
     public void ejecutarOpcion(int opcion) {
-        
+        switch(opcion){
+            case 1:
+                //gui
+                break;
+            case 2:   
+                //gui
+                break;
+            case 3: 
+                listEspecificaciones();
+                break;              
+        }
     }
 
     @Override
